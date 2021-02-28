@@ -8,3 +8,13 @@ Coming Soon:
 - OpenSea
 - MarkersPlace
 - Rarible
+
+TechStack:
+- React
+- MaterialUI
+- MetaMask
+- Web3
+- Fleek
+- TheGraph
+
+https://mintworld.on.fleek.co/
