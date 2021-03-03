@@ -87,7 +87,7 @@ export default function NftGrid() {
 
   return (
     <div>
-      {posts.length > 0 ? (
+      {posts.length > 0 ? (        
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
             <Grid container justify="center" spacing={10}>

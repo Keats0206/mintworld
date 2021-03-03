@@ -26,13 +26,17 @@ export default function MainAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
-          </IconButton> */}
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             Mint.wrld
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          <Button 
+            color="inherit"
+            variant="outlined">
+          Connect Wallet
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
