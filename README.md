@@ -5,6 +5,10 @@ https://mintworld.on.fleek.co/
 Currently Integrated with NFT's from:
 - Our ZORA
 
+ToDo:
+- Image loading speed slow
+- Audio media type not loading properly
+
 Coming Soon:
 - Superrare
 - OpenSea
