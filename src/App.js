@@ -2,7 +2,6 @@ import Main from './Main.js';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-
 const theme = createMuiTheme({
   palette: {
     type: "dark",

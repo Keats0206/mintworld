@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NftGrid from './NftGrid';
+import { web3 } from "./providers/GlobalProvider"; // Global state
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -16,9 +18,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import Player from './Player';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import SettingsIcon from '@material-ui/icons/Settings';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 
 const drawerWidth = 240;
 
@@ -70,6 +74,10 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
+  appBarRight: {
+    marginLeft: 'auto',
+    display: 'flex',
+  },
   toolbar: {
     display: 'flex',
     alignItems: 'center',
@@ -88,6 +96,14 @@ export default function Main() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { address, authenticate } = web3.useContainer(); // Global state
+  const [loading, setLoading] = useState(false); // Loading state
+
+  const authenticateWithLoading = async () => {
+    setLoading(true); // Toggle loading
+    await authenticate(); // Authenticate
+    setLoading(false); // Toggle loading
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -96,6 +112,7 @@ export default function Main() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
 
   return (
     <div className={classes.root}>
@@ -121,6 +138,30 @@ export default function Main() {
           <Typography variant="h6" noWrap>
             Mint.Wrld
           </Typography>
+          <div className={classes.appBarRight}>
+            { address ? (
+              <Button
+              color="inherit" 
+              variant="outlined"
+              size="large"
+              className={classes.button}
+              endIcon={<AccountCircle />}
+              >
+                {address.substr(0, 5) +
+                        "..." +
+                address.slice(address.length - 5)}
+              </Button>
+            ) : ( 
+                <Button 
+                  color="inherit" 
+                  variant="outlined"
+                  onClick={authenticateWithLoading}
+                  disabled={loading}
+                >
+                  {loading ? "Connecting..." : "Connect Wallet"}
+                </Button>
+          )}
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -143,21 +184,25 @@ export default function Main() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button key={0}>
+              <ListItemIcon> <MusicNoteIcon /> </ListItemIcon>
+              <ListItemText primary={'Browse'} />
             </ListItem>
-          ))}
+            <ListItem button key={1}>
+              <ListItemIcon> <LibraryMusicIcon /> </ListItemIcon>
+              <ListItemText primary={'My Collection'} />
+            </ListItem>
+            <ListItem button key={2}>
+              <ListItemIcon> <PlaylistPlayIcon /> </ListItemIcon>
+              <ListItemText primary={'My Lists'} />
+            </ListItem>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <ListItem button key={3}>
+              <ListItemIcon> <SettingsIcon /> </ListItemIcon>
+              <ListItemText primary={'Settings'} />
             </ListItem>
-          ))}
         </List>
       </Drawer>
       <main className={classes.content}>
