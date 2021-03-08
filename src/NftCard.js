@@ -11,12 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SendIcon from '@material-ui/icons/Send';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import makeBlockie from "ethereum-blockies-base64"; // Ethereum avatar
 import IconButton from '@material-ui/core/IconButton';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,13 +113,10 @@ export default function NftCard({
       <CardActions disableSpacing>
         <div className={classes.controls}>
           <IconButton aria-label="previous">
-            <SkipPreviousIcon />
+            <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="play/pause">
             <PlayArrowIcon className={classes.playIcon} />
-          </IconButton>
-          <IconButton aria-label="next">
-             <SkipNextIcon/>
           </IconButton>
         </div>
         <Button

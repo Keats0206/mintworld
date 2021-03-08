@@ -1,6 +1,5 @@
 import Main from './Main.js';
 import Player from './Player.js';
-
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -19,8 +18,8 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-        <Player />
         <CssBaseline />
+        <Player />
         <Main />
    </ThemeProvider>
   );

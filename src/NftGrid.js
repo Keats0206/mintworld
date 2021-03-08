@@ -138,3 +138,7 @@ export default function NftGrid() {
     </div>
   );
 }
+
+
+
+
