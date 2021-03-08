@@ -1,8 +1,7 @@
-import MainAppBar from './MainAppBar.js';
-import NftGrid from './NftGrid.js';
+import Main from './Main.js';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -20,8 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
         <CssBaseline />
-        <MainAppBar />
-        <NftGrid />
+        <Main />
    </ThemeProvider>
   );
 }
