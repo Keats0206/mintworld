@@ -34,7 +34,6 @@ export default function NftGrid() {
   const [posts, setPosts] = useState([]); // Posts array
   const [loading, setLoading] = useState(false); // Button loading state
   const [numPosts, setNumPosts] = useState(null); // Number of loadable posts
-  
   /**
    * Collects initial 12 posts to display
    */ 

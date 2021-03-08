@@ -1,6 +1,10 @@
 import AudioPlayer from 'material-ui-audio-player';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+
+
 
 const src = [
   'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
@@ -9,48 +13,14 @@ const src = [
 
 const useStyles = makeStyles((theme) => ({
         root: {
-          [theme.breakpoints.down('sm')]: {
-            width: '100%'
-          },
-        },
-        loopIcon: {
-          color: '#3f51b5',
-          '&.selected': {
-            color: '#0921a9'
-          },
-          '&:hover': {
-            color: '#7986cb'
-          },
-          [theme.breakpoints.down('sm')]: {
-            display: 'none'
-          }
-        },
-        playIcon: {
-          color: '#f50057',
-          '&:hover': {
-            color: '#ff4081'
-          }
-        },
-        volumeIcon: {
-          color: 'rgba(0, 0, 0, 0.54)'
-        },
-        volumeSlider: {
-          color: 'black'
-        },
-        progressTime: {
-          color: 'rgba(0, 0, 0, 0.54)'
-        },
-        mainSlider: {
-          color: '#3f51b5',
-          '& .MuiSlider-rail': {
-            color: '#7986cb'
-          },
-          '& .MuiSlider-track': {
-            color: '#3f51b5'
-          },
-          '& .MuiSlider-thumb': {
-            color: '#303f9f'
-          }
+          zIndex: theme.zIndex.drawer + 2,
+          width: '100vw',
+          position: 'fixed',
+          bottom: 0,
+          marginInline: 0
+    },
+    player: {
+      width: '100vw'
     }
 }));
 
@@ -58,15 +28,16 @@ export default function Player() {
     const classes = useStyles();
 
 return (
-    <div className={classes.player}>
+      <Container className={classes.root}>
         <AudioPlayer
-            useStyles={useStyles}
-            elevation={1}
-            width="500px"
-            variation="primary"
-            spacing={6}
-            debug={false}
-            src={src[1]}
+          elevation={1}
+          width="100vw"
+          variation="default"
+          spacing={3}
+          autoplay={true}
+          order="standart"
+          preload="auto"
+          src={src}
         />
-    </div>
+      </Container>
 )};
